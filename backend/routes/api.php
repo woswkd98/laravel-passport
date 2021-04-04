@@ -18,16 +18,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// 언어 설정
 
-Route::get('lang/{locate}', function ($locate) {
 
-    if (!in_array($locate, ['en', 'kr'])) {
-        abort(400);
-    }
-    App::setLocale($locate);
-    Cookie::queue("locate", $locate);
-    return response(['msg' => $locate], 200);
+
+Route::get('api/test', function () {
+    return "test";
 });
 
 

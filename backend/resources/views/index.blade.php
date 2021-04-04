@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
@@ -12,23 +12,12 @@
         <a href="{{ url('/index/2') }}">Visit
     </body>
     <script>
-
-        $(document).ready(function() {
-            $('#changeLang').on("click",function() {
-                $.ajax({
-                    type: "GET",
-                    url: '/api/lang/en',
-                    dataType : 'json',
-                    success : function(res) {
-                        console.log(res);
-                        alert(res.msg);
-                        window.location.reload();
-                    },
-                });
-            })
-        });
-
-
+        window.onbeforeunload = function () {
+            let token = new Headers().get("Authorization");
+            if(!token) {
+                localStorage.setItem('Authorization', token);
+            }
+        }
 
     </script>
 
