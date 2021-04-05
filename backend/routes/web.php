@@ -38,7 +38,7 @@ Route::middleware([CheckLocale::class])->group(function () {
             'res' => App::currentLocale()
         ]);
     });
-    Route::post(LOCALE_PATH.'/login', 'App\Http\Controllers\LoginController@login')->name('login');
+    Route::post(LOCALE_PATH.'/login', 'App\Http\Controllers\LoginController@login');
     Route::resource(LOCALE_PATH.'/users', 'App\Http\Controllers\UserController');
 });
 //Route::post('login', 'App\Http\Controllers\LoginController@login');

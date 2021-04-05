@@ -4,6 +4,7 @@ use GuzzleHttp\Cookie\SetCookie;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -20,12 +21,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::middleware('auth:api')->group(function() {
+    
 
-Route::get('api/test', function () {
-    return "test";
+Route::get('test', function () {
+    return Auth();
 });
 
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
 });
